@@ -13,9 +13,10 @@ write test cases for all part including login for Demo Mohats skills
 
 
 ## login
-1. user should be able to login using username and password provided
-2. wrong username and password would results in 'invalid cred' 
-3. 'Forget your password' functions properly and user gets a mail sent once they provide user name
+- user should be able to login using username and password provided 🟩
+- required text is visible when user just clicks on login 🟩
+- wrong username and password would results in 'invalid cred' 🟩
+- 'Forget your password' functions properly and user gets a mail sent once they provide user name
 
 ## side-bar
     - search
