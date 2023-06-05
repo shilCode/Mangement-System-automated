@@ -1,0 +1,15 @@
+{
+  "name": "mangement-system-automated",
+  "version": "1.0.0",
+  "description": "https://opensource-demo.orangehrmlive.com/",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.34.3"
+  }
+}
