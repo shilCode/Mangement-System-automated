@@ -1,82 +1,100 @@
 // @ts-check
 const { test, expect, chromium } = require('@playwright/test');
+const {POmanger} = require('../pageobject/POmanager')
 let page;
+
 
 test.beforeAll( async ({browser})=>{
    page = await browser.newPage();
-   await page.goto('https://opensource-demo.orangehrmlive.com/');
+   const poManger = new POmanger(page);
+   const loginPage = poManger.getLoginPage()
+
+
+   await loginPage.goTo()
 })
 
 
 test.describe('LOGIN',async ()=>{
   test('invalid login', async () => {
+    
+    const poManger = new POmanger(page);
+    const loginPage = poManger.getLoginPage()
   
     //invalid login
-    await page.locator('[placeholder="Username"]').type('Admin')
-    await page.locator('[name="password"]').type('admin12344') //passcode is wrong
-    await page.locator('[type="submit"]').click()
+    await loginPage.userName.type('Admin')
+    await loginPage.password.type('admin12344') //passcode is wrong
+    await loginPage.submit.click()
   
-    await expect(page.locator('[role="alert"]')).toHaveText('Invalid credentials')
+    await expect(loginPage.alertInvalidCred).toHaveText('Invalid credentials')
   });
   
   test('login - required field ', async () => {
+
+    const poManger = new POmanger(page);
+    const loginPage = poManger.getLoginPage()
     
     //required field needs to be filled text is present and visible
-    await page.locator('[class*="orangehrm-login-button"]').click()
-    await expect(page.locator('[class*="oxd-input-field-error-message"]').nth(0)).toContainText('Required')
-    await expect(page.locator('[class*="oxd-input-field-error-message"]').nth(1)).toContainText('Required')
-    await expect(page.locator('[class*="oxd-input-field-error-message"]').nth(0)).toBeVisible()
-    await expect(page.locator('[class*="oxd-input-field-error-message"]').nth(1)).toBeVisible()
+    await loginPage.submit.click()
+    await expect(loginPage.requiredField.nth(0)).toContainText('Required')
+    await expect(loginPage.requiredField.nth(1)).toContainText('Required')
+    await expect(loginPage.requiredField.nth(0)).toBeVisible()
+    await expect(loginPage.requiredField.nth(1)).toBeVisible()
   
   });
   
   
   test('valid login', async () => {
-  
-    await page.locator('[placeholder="Username"]').type('Admin')
-    await page.locator('[name="password"]').type('admin123')
-    await page.locator('[type="submit"]').click()
-    await expect(page.locator('[alt="profile picture"]').nth(0)).toBeInViewport()
+    const poManger = new POmanger(page);
+    const loginPage = poManger.getLoginPage()
+
+    await loginPage.userName.type('Admin')
+    await loginPage.password.type('admin123')
+    await loginPage.submit.click()
+    await expect(loginPage.profilePicDashboard.nth(0)).toBeInViewport()
   
   });
 
 
   test('forget password',async ()=>{
 
-    await page.locator('[class*="orangehrm-login-forgot-header"]').click()
-    await page.locator('[name="username"]').type('abc')
-    await page.locator('[type="submit"]').click()
-    await expect(await page.locator('[class*="orangehrm-forgot-password-title"]')).toHaveText("Reset Password link sent successfully")
+    const poManger = new POmanger(page);
+    const loginPage = poManger.getLoginPage()
+
+    await loginPage.forgetPassword.click()
+    await loginPage.userName.type('abc')
+    await loginPage.submit.click()
+    await expect(await loginPage.forgetPasswordTitle).toHaveText("Reset Password link sent successfully")
   
   })
 } )
 
 
 
-test.describe.only('Sidebar',async()=>{
+test.describe('Sidebar',async()=>{
   test('Dashboard needs to be landing page after login',async()=>{
 
-    //valid loging - need to delete this while changing things to POM
+    const poManger = new POmanger(page);
+    const loginPage = poManger.getLoginPage()
+    const sideBar = poManger.getSideBar()
 
-    await page.locator('[placeholder="Username"]').type('Admin')
-    await page.locator('[name="password"]').type('admin123')
-    await page.locator('[type="submit"]').click()
-    await expect(page.locator('[alt="profile picture"]').nth(0)).toBeInViewport()
+    await loginPage.validLogin()
 
     
     //making sure after login Dashboard is present after login
-    await expect(page.locator('[class*=oxd-text--h6]')).toContainText('Dashboard')
+    await expect(sideBar.dashboardHeader).toContainText('Dashboard')
 
   })
   test('Verify that sidebar can be hidden',async()=>{
 
     
-    await page.locator('[placeholder="Username"]').type('Admin')
-    await page.locator('[name="password"]').type('admin123')
-    await page.locator('[type="submit"]').click()
-    await expect(page.locator('[alt="profile picture"]').nth(0)).toBeInViewport()
+    const poManger = new POmanger(page);
+    const loginPage = poManger.getLoginPage()
+    const sideBar = poManger.getSideBar()
 
-    await page.locator('[class*="oxd-main-menu-button"]').click()
+    await loginPage.validLogin()
+
+    await sideBar.mainMenuButton.click()
+    await expect(sideBar.mainMenuButton).toBeEditable()
 
 
   })

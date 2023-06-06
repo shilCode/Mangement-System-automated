@@ -33,8 +33,8 @@ _Elements in the sidebar_
     - Maintenance
     - Buzz
 **TEST CASES**    
-- Dashboard needs to be landing page after login
-- Verify that sidebar can be hidden
+- Dashboard needs to be landing page after login 🟩
+- Verify that sidebar can be hidden 🟩
 - Verify all the component mentioned above are visible in the side-bar
 - Verify that search is fucntional
 - 
