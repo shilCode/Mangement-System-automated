@@ -1,23 +1,24 @@
 // @ts-check
-const { test, expect, chromium } = require('@playwright/test');
+const { test, expect } = require('@playwright/test');
 const {POmanger} = require('../pageobject/POmanager')
 let page;
-
-
-test.beforeAll( async ({browser})=>{
-   page = await browser.newPage();
-   const poManger = new POmanger(page);
-   const loginPage = poManger.getLoginPage()
-
-
-   await loginPage.goTo()
-})
-
+let poManger;
+let context;
 
 test.describe('LOGIN',async ()=>{
+
+  test.beforeAll( async ({browser})=>{
+    context = await browser.newContext()
+    page = await context.newPage();
+    poManger = new POmanger(page);
+     const loginPage = poManger.getLoginPage()
+  
+     await loginPage.goTo()
+     
+  })
+  
   test('invalid login', async () => {
-    
-    const poManger = new POmanger(page);
+
     const loginPage = poManger.getLoginPage()
   
     //invalid login
@@ -30,7 +31,6 @@ test.describe('LOGIN',async ()=>{
   
   test('login - required field ', async () => {
 
-    const poManger = new POmanger(page);
     const loginPage = poManger.getLoginPage()
     
     //required field needs to be filled text is present and visible
@@ -43,10 +43,10 @@ test.describe('LOGIN',async ()=>{
   });
 
   test('forget password',async ()=>{
-  
-    const poManger = new POmanger(page);
-    const loginPage = poManger.getLoginPage()
 
+    const loginPage = poManger.getLoginPage()
+    
+    
     await loginPage.forgetPassword.click()
     await loginPage.userName.type('abc')
     await loginPage.submit.click()
@@ -56,11 +56,10 @@ test.describe('LOGIN',async ()=>{
   
   
   test('valid login', async ({browser}) => {
-    const poManger = new POmanger(page);
-    const loginPage = poManger.getLoginPage()
-    page = await browser.newPage();
-    await loginPage.goTo()
 
+    const loginPage = poManger.getLoginPage()
+
+    await loginPage.userName.waitFor()
     await loginPage.userName.type('Admin')
     await loginPage.password.type('admin123')
     await loginPage.submit.click()
@@ -68,32 +67,34 @@ test.describe('LOGIN',async ()=>{
   
   });
 
-
-  
 } )
 
-
-
 test.describe('Sidebar',async()=>{
-  test('Dashboard needs to be landing page after login',async()=>{
 
-    const poManger = new POmanger(page);
+  test.beforeAll( async ({browser})=>{
+    context = await browser.newContext()
+    page = await browser.newPage();
+    poManger = new POmanger(page);
+  
+     const loginPage = poManger.getLoginPage()
+  
+     await loginPage.goTo()
+     await loginPage.validLogin()
+  })
+
+  test('Dashboard needs to be landing page after login',async()=>{
     const loginPage = poManger.getLoginPage()
     const sideBar = poManger.getSideBar()
-
-    await loginPage.validLogin()
-
-
+ 
     //making sure after login Dashboard is present after login
     await expect(sideBar.dashboardHeader).toContainText('Dashboard')
-
+  
   })
-  test('Verify that sidebar can be hidden',async()=>{
  
-    const poManger = new POmanger(page);
+  test('Verify that sidebar can be hidden',async()=>{
+
     const loginPage = poManger.getLoginPage()
     const sideBar = poManger.getSideBar()
-
   
     await sideBar.mainMenuButton.click()
     await sideBar.mainMenuButton.click()
@@ -103,13 +104,10 @@ test.describe('Sidebar',async()=>{
   })
 
   test('Verify all the side-bar component are visible in the side-bar',async()=>{
- 
-    const poManger = new POmanger(page);
+
     const loginPage = poManger.getLoginPage()
     const sideBar = poManger.getSideBar()
-    
-    await loginPage.validLogin()
-    
+ 
     await expect(sideBar.mainMenuButton).toBeEditable()
 
     //Admin
@@ -156,12 +154,34 @@ test.describe('Sidebar',async()=>{
     await expect(sideBar.buzzComponent).toContainText('Buzz')
     await expect(sideBar.buzzComponent).toBeVisible()
     await expect(sideBar.buzzComponent).toBeEditable()
-    // await page.pause()
+   
 
 
   })
 
+  test('Verify that search is fucntional',async()=>{
+
+    const loginPage = poManger.getLoginPage()
+    const sideBar = poManger.getSideBar()
+
+    //making sure a component is not visible so that search work as it shoud be
+    await sideBar.searchBar.type("Admin")
+    await expect(sideBar.adminComponent).toBeVisible()
+    await expect(sideBar.performanceComponent).toBeHidden()
+
+  })
+
   
+})
+
+test.describe.skip('Navigation Bar',()=>{
+  test("Profile is visible",()=>{
+
+  })
+
+  test("Verify About, support, change password and logout is functional",()=>{
+
+  })
 })
 
 

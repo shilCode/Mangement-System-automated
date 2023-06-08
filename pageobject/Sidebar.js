@@ -13,6 +13,7 @@ class SideBar{
         this.directoryComponent=page.locator('[href="/web/index.php/directory/viewDirectory"]')
         this.maintenceComponent= page.locator('[href="/web/index.php/maintenance/viewMaintenanceModule"]')
         this.buzzComponent=page.locator('[href="/web/index.php/buzz/viewBuzz"]')
+        this.searchBar=page.locator('[placeholder="Search"]')
 
     }
 }
