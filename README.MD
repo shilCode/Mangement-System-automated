@@ -55,7 +55,7 @@ _Elements in the sidebar_
     - should contain login related test cases
 - SideBar 🟩
     - should contain sideBar component
-- NavBar
+- NavBar🟩
     - should contain navigation related component
 
 
