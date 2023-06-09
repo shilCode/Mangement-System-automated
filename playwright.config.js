@@ -15,7 +15,7 @@ module.exports = defineConfig({
   use: {
     
     trace: 'on-first-retry',
-    headless:true,
+    headless:false,
 
   },
 

@@ -38,9 +38,14 @@ _Elements in the sidebar_
     - Directory
     - Maintenance
     - Buzz
-- Verify that search is fucntional
-- Profile is visible
-- Verify About, support, change password and logout is functional
+- Verify that search is fucntional🟩
+- Profile is visible🟩
+- Verify About, support, change password and logout is visible and contain proper text🟩
+- Verify About is funtional
+- Verify Support is functional
+- Verify Change Password is functional
+- Verify Logout is functional
+- 
 
 
 ## Transfer the test-cases to Page object model for with DRY method
