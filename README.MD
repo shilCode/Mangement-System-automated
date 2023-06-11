@@ -9,7 +9,7 @@ https://opensource-demo.orangehrmlive.com/
 - After each section PO the test case
 
 
-write test cases for all part including login for Demo Mohats skills
+write test cases for all part including login for Demo my automation skills
 
 
 
