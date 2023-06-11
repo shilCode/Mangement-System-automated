@@ -1,6 +1,6 @@
-const LoginPage=require('./LoginPage')
-const SideBar =require('./Sidebar')
-const NavBar=require('./NavBar')
+const LoginPage=require('../pageobject/common/LoginPage')
+const SideBar =require('../pageobject/common/Sidebar')
+const NavBar=require('../pageobject/common/NavBar')
 
 class POmanger{
     constructor(page){
