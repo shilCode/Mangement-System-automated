@@ -7,6 +7,8 @@ class NavBar{
         this.userAreaAboutHeading=page.locator('[class*=orangehrm-main-title]')
         this.userAreaDialogClose=page.locator('[class*="oxd-dialog-close-button"]')
         this.userAreaSupport=page.locator('//a[contains(text(),"Support")]')
+        this.userAreaSupportLink=page.locator('[href="mailto:ossupport@orangehrm.com"]')
+        this.userAreadHelpIcon=page.locator('[title="Help"]')
         this.userChangePass=page.locator('//a[contains(text(),"Change")]')
         this.userAreaLogout=page.locator('//a[contains(text(),"Logout")]')
     }

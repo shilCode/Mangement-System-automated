@@ -37,18 +37,14 @@ let context;
       await expect(navBar.userChangePass).toContainText('Change Password')
       await expect(navBar.userAreaLogout).toBeVisible()
       await expect(navBar.userAreaLogout).toContainText('Logout')
-  
-  
     })
 
     test("Profile is visible",async ()=>{
 
         const navBar = poManger.getNavBar()
-
         await page.waitForURL('**/dashboard/index');
         await expect(navBar.userArea).toBeVisible()
         await expect(navBar.userArea).toBeEditable()
-        
       })
     
   
@@ -62,20 +58,34 @@ let context;
       await expect(navBar.userAreaAboutHeading).toContainText('About')
       await expect(navBar.userAreaDialogClose).toBeEditable()
       await navBar.userAreaDialogClose.click()
-    
-  
     })
   
-    // test("Verify Support is functional",async ()=>{
+    test("Verify Support is functional",async ()=>{
   
-    //   const loginPage = poManger.getLoginPage()
-    //   const navBar = poManger.getNavBar()
-  
-    //   await loginPage.validLogin()
-  
-    // //
-  
-    // })
+     test.slow()
+      const navBar = poManger.getNavBar()
+      await navBar.userArea.click()
+      await navBar.userAreaSupport.click()
+      await expect(page).toHaveURL(/.*support/);
+      await expect(navBar.userAreaSupportLink).toContainText(' ossupport@orangehrm.com ')
+      await expect(navBar.userAreaSupportLink).toBeEditable()
+      await expect(navBar.userAreadHelpIcon).toBeEditable()
+
+      const pagePromise = context.waitForEvent('page');
+      await navBar.userAreadHelpIcon.click()
+      //navigation to newPage
+      const newPage = await pagePromise;
+        await newPage.waitForLoadState();
+
+        const HelpGuide = newPage.url()
+
+        expect(HelpGuide).toMatch('https://starterhelp.orangehrm.com/hc/en-us')
+
+        console.log(newPage.url())
+      
+        
+
+    })
   
     // test("Verify Change Password is functional",async ()=>{
   
