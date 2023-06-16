@@ -13,22 +13,19 @@ let context;
        const loginPage = poManger.getLoginPage()
     
        await loginPage.goTo()
+       await loginPage.validLogin()
        
     })
   
     test("Assert About, support, change password and logout is visible and contain proper text",async ()=>{
   
         test.slow()
-      const loginPage = poManger.getLoginPage()
-      const navBar = poManger.getNavBar()
 
-      
-  
-      await loginPage.validLogin()
+      const navBar = poManger.getNavBar()
 
       await page.waitForURL('**/dashboard/index');
 
-    await navBar.userArea.waitFor()
+        await navBar.userArea.waitFor()
       await expect(navBar.userArea).toBeVisible()
       
       await navBar.userAreaDropdown.click()
@@ -45,11 +42,10 @@ let context;
     })
 
     test("Profile is visible",async ()=>{
-        const loginPage = poManger.getLoginPage()
+
         const navBar = poManger.getNavBar()
-    
-        await loginPage.validLogin()
-    
+
+        await page.waitForURL('**/dashboard/index');
         await expect(navBar.userArea).toBeVisible()
         await expect(navBar.userArea).toBeEditable()
         
@@ -57,16 +53,18 @@ let context;
     
   
   
-    // test("Verify About is funtional",async ()=>{
+    test("Verify About is funtional",async ()=>{
+      const navBar = poManger.getNavBar()
+
+      await page.waitForURL('**/dashboard/index');
+      await navBar.userArea.click()
+      await navBar.userAreaAbout.click()
+      await expect(navBar.userAreaAboutHeading).toContainText('About')
+      await expect(navBar.userAreaDialogClose).toBeEditable()
+      await navBar.userAreaDialogClose.click()
+    
   
-    //   const loginPage = poManger.getLoginPage()
-    //   const navBar = poManger.getNavBar()
-  
-    //   await loginPage.validLogin()
-  
-    // //
-  
-    // })
+    })
   
     // test("Verify Support is functional",async ()=>{
   
