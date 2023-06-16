@@ -17,9 +17,18 @@ class LoginPage{
     }
 
     async validLogin(){
+
+
+    if(this.userName.isVisible()){
         await this.userName.type('Admin')
-    await this.password.type('admin123')
-    await this.submit.click()
+        await this.password.type('admin123')
+        await this.submit.click()
+    }else {
+        this.page.reload()
+        await this.userName.type('Admin')
+        await this.password.type('admin123')
+        await this.submit.click()
+    }
     }
 }
 module.exports=LoginPage;
