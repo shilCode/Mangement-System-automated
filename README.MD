@@ -2,17 +2,8 @@
 
 https://opensource-demo.orangehrmlive.com/
 
-**WORKFLOW**
-- Think about the scenario 
-- Write it down below
-- Code the test-case
-- After each section PO the test case
-
 
 write test cases for all part including login for Demo my automation skills
-
-
-
 
 ## TEST CASES    
 
@@ -22,6 +13,7 @@ write test cases for all part including login for Demo my automation skills
 - wrong username and password would results in 'invalid cred' 🟩
 - 'Forget your password' functions properly and user gets a mail sent once they provide user name 🟩
 
+**sidebar related test cases**
 - Dashboard needs to be landing page after login 🟩
 - Verify that sidebar can be hidden 🟩
 - Verify all the component mentioned above are visible in the side-bar🟩
@@ -40,12 +32,13 @@ _Elements in the sidebar_
     - Buzz
 - Verify that search is fucntional🟩
 - Profile is visible🟩
+
+**NavBar related test cases**
 - Verify About, support, change password and logout is visible and contain proper text🟩
-- Verify About is funtional
-- Verify Support is functional
-- Verify Change Password is functional
-- Verify Logout is functional
-- 
+- Verify About is funtional🟩
+- Verify Support is functional🟩
+- Verify Change Password is functional🟩
+- Verify Logout is functional🟩
 
 
 ## Transfer the test-cases to Page object model for with DRY method
@@ -57,5 +50,15 @@ _Elements in the sidebar_
     - should contain sideBar component
 - NavBar🟩
     - should contain navigation related component
+
+## Report
+- Allure reports
+
+
+**WORKFLOW**
+- Think about the scenario 
+- Write it down below
+- Code the test-case
+- After each section PO the test case
 
 

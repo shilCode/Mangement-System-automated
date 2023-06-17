@@ -10,8 +10,9 @@ let context;
       context = await browser.newContext()
       page = await context.newPage();
       poManger = new POmanger(page);
+
+
        const loginPage = poManger.getLoginPage()
-    
        await loginPage.goTo()
        await loginPage.validLogin()
        
@@ -87,25 +88,31 @@ let context;
 
     })
   
-    // test("Verify Change Password is functional",async ()=>{
+    test("Verify Change Password is functional",async ()=>{
+
+      const navBar = poManger.getNavBar()
+      
+       
+      await navBar.userArea.click()
+      await navBar.userChangePass.click()
+      await navBar.userChangePasswordAdmin.nth(0).type('admin123')
+      await navBar.userChangePasswordAdmin.nth(1).type('Admin1234')
+      await navBar.userChangePasswordAdmin.nth(2).type('Admin1234')
+      await navBar.userChangePasswordSubmit.click()
+      await navBar.userChangePasswordSuccess.nth(0).waitFor()
+      await expect(navBar.userChangePasswordSuccess.nth(0)).toBeVisible()
+      await expect(navBar.userChangePasswordSuccess.nth(0)).toContainText('Success')
+
+    })
   
-    //   const loginPage = poManger.getLoginPage()
-    //   const navBar = poManger.getNavBar()
+    test("Verify Logout is functional",async ()=>{
   
-    //   await loginPage.validLogin()
+      
+      const navBar = poManger.getNavBar()
+      await navBar.userArea.click()
+      await navBar.userAreaLogout.click()
+      expect(page.url()).toMatch('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
+
   
-    // //
-  
-    // })
-  
-    // test("Verify Logout is functional",async ()=>{
-  
-    //   const loginPage = poManger.getLoginPage()
-    //   const navBar = poManger.getNavBar()
-  
-    //   await loginPage.validLogin()
-  
-    // //
-  
-    // })
+    })
   

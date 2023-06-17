@@ -10,12 +10,13 @@ module.exports = defineConfig({
   fullyParallel: true,
   reporter: 'list',
   retries:1,
+  workers: process.env.CI ? undefined : undefined,
   
   
   use: {
     
     trace: 'on-first-retry',
-    headless:false,
+    headless:true,
 
   },
 

@@ -10,7 +10,11 @@ class NavBar{
         this.userAreaSupportLink=page.locator('[href="mailto:ossupport@orangehrm.com"]')
         this.userAreadHelpIcon=page.locator('[title="Help"]')
         this.userChangePass=page.locator('//a[contains(text(),"Change")]')
+        this.userChangePasswordAdmin=page.locator('[type="password"]')
+        this.userChangePasswordSubmit=page.locator('[type="submit"]')
+        this.userChangePasswordSuccess=page.locator('[class*="oxd-toast-container"]')
         this.userAreaLogout=page.locator('//a[contains(text(),"Logout")]')
+        
     }
 }
 module.exports=NavBar;
