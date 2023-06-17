@@ -5,7 +5,7 @@ https://opensource-demo.orangehrmlive.com/
 
 write test cases for all part including login for Demo my automation skills
 
-## TEST CASES    
+## TEST CASES = 14  
 
 **login related test cases**
 - user should be able to login using username and password provided 🟩
