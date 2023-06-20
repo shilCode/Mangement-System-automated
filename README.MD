@@ -3,7 +3,17 @@
 https://opensource-demo.orangehrmlive.com/
 
 
-write test cases for all part including login for Demo my automation skills
+- Automation framework used: Playwright
+- Language: JS
+- Methods used: DRY, Page Object, OOP
+
+To run use code below:
+
+```
+npm test
+
+```
+
 
 ## TEST CASES = 14  
 
@@ -54,11 +64,5 @@ _Elements in the sidebar_
 ## Report
 - Allure reports
 
-
-**WORKFLOW**
-- Think about the scenario 
-- Write it down below
-- Code the test-case
-- After each section PO the test case
 
 
