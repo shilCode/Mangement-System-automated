@@ -10,20 +10,24 @@ https://opensource-demo.orangehrmlive.com/
 To run use code below:
 
 ```
-npm test
+npm i && npm test
 
 ```
 
 
-## TEST CASES = 14  
+## TEST CASES = 15  
 
-**login related test cases**
+**login related test cases - login.spec.js**
 - user should be able to login using username and password provided 🟩
 - required text is visible when user just clicks on login 🟩
 - wrong username and password would results in 'invalid cred' 🟩
 - 'Forget your password' functions properly and user gets a mail sent once they provide user name 🟩
 
-**sidebar related test cases**
+**Skip login related test cases -skipLogin.spec.js**
+- Skip login with cookies and set storage
+    - auth.json is authentication state that can be used for the user
+
+**sidebar related test cases sidebar.spec.js**
 - Dashboard needs to be landing page after login 🟩
 - Verify that sidebar can be hidden 🟩
 - Verify all the component mentioned above are visible in the side-bar🟩
@@ -43,13 +47,16 @@ _Elements in the sidebar_
 - Verify that search is fucntional🟩
 - Profile is visible🟩
 
-**NavBar related test cases**
+**NavBar related test cases navigation.spec.js**
 - Verify About, support, change password and logout is visible and contain proper text🟩
 - Verify About is funtional🟩
 - Verify Support is functional🟩
 - Verify Change Password is functional🟩
 - Verify Logout is functional🟩
 
+
+## API TEST
+- TBD
 
 ## Transfer the test-cases to Page object model for with DRY method
 - POmanger 

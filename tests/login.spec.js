@@ -1,12 +1,13 @@
 // @ts-check
-const { test, expect } = require('@playwright/test');
+const { test, expect, chromium } = require('@playwright/test');
 const {POmanger} = require('../pageobject/POmanager')
 let page;
 let poManger;
 let context;
 
 
-  test.beforeAll( async ({browser})=>{
+  test.beforeAll( async ()=>{
+    const browser = await chromium.launch()
     context = await browser.newContext()
     page = await context.newPage();
     poManger = new POmanger(page);
@@ -53,7 +54,7 @@ let context;
   })
   
   
-  test('valid login', async ({browser}) => {
+  test('valid login', async () => {
 
     const loginPage = poManger.getLoginPage()
 
