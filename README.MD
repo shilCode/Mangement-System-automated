@@ -4,6 +4,7 @@ https://opensource-demo.orangehrmlive.com/
 
 
 - Automation framework used: Playwright
+- BDD framework used: Cucumber
 - Language: JS
 - Methods used: DRY, Page Object, OOP
 
@@ -13,6 +14,7 @@ To run use code below:
 npm i && npm test
 
 ```
+
 
 
 ## TEST CASES = 15  
@@ -46,6 +48,7 @@ _Elements in the sidebar_
     - Buzz
 - Verify that search is fucntional🟩
 - Profile is visible🟩
+
 
 **NavBar related test cases navigation.spec.js**
 - Verify About, support, change password and logout is visible and contain proper text🟩

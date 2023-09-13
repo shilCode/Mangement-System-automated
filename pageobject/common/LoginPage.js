@@ -30,5 +30,7 @@ class LoginPage{
         await this.submit.click()
     }
     }
+
+ 
 }
 module.exports=LoginPage;

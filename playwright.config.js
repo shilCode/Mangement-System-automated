@@ -9,14 +9,14 @@ module.exports = defineConfig({
   /* Run tests in files in parallel */
   fullyParallel: true,
   reporter: 'list',
-  retries:1,
+  retries:0,
   workers: process.env.CI ? undefined : undefined,
   
   
   use: {
     
     trace: 'on-first-retry',
-    headless:true,
+    headless:false,
 
   },
 
