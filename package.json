@@ -4,7 +4,8 @@
   "description": "https://opensource-demo.orangehrmlive.com/",
   "main": "index.js",
   "scripts": {
-    "test": "npx playwright test"
+    "test": "npx cucumber-js",
+    "test-pw":"npx playwright test"
   },
   "keywords": [],
   "author": "",

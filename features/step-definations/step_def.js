@@ -3,13 +3,13 @@ const { Given, When, Then, setDefaultTimeout, AfterAll } = require('@cucumber/cu
 const { chromium, expect } = require('@playwright/test');
 const { POmanger } = require('../../pageobject/POmanager');
 
-setDefaultTimeout(10 * 1000);
+setDefaultTimeout(8000);
 let poManger;
 let loginPage;
 
 
 Given('the user is on the login page', async function () {
-  const browser = await chromium.launch({ headless: false });
+  const browser = await chromium.launch();
   const context = await browser.newContext();
   const page = await context.newPage();
    poManger = new POmanger(page);

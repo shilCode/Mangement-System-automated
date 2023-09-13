@@ -11,10 +11,12 @@ https://opensource-demo.orangehrmlive.com/
 To run use code below:
 
 ```
-npm i && npm test
+npm i && npm test && npm run test-pw
 
 ```
 
+!Issues I will fix
+-- cucumber is not stopping 
 
 
 ## TEST CASES = 15  
