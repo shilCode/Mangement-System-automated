@@ -10,12 +10,12 @@ Feature: Login Functionality
     When the user submits without filling required fields
     Then the required field messages are displayed
 
-  # Scenario: Forget password
-  #   Given the user is on the login page
-  #   When the user clicks on the "Forgot Password" link and provides an invalid username
-  #   Then a success message is displayed
+  Scenario: Forget password
+    Given the user is on the login page
+    When the user clicks on the "Forgot Password" link and provides an invalid username
+    Then a success message is displayed
 
-  # Scenario: Valid login
-  #   Given the user is on the login page
-  #   When the user enters valid credentials
-  #   Then the user is logged in and sees the profile picture on the dashboard
+  Scenario: Valid login
+    Given the user is on the login page
+    When the user enters valid credentials
+    Then the user is logged in and sees the profile picture on the dashboard

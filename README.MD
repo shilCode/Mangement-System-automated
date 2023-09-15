@@ -16,7 +16,7 @@ npm i && npm test && npm run test-pw
 ```
 
 !!Issues I will fix
--- cucumber is not stopping 
+-- need to fix fail tests and remove explicit wait
 
 
 ## TEST CASES = 15  
