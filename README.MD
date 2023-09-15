@@ -16,7 +16,7 @@ npm i && npm test && npm run test-pw
 ```
 
 !!Issues I will fix
--- need to fix fail tests and remove explicit wait
+-- need to fix explicit wait
 
 
 ## TEST CASES = 15  
