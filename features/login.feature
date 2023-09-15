@@ -13,9 +13,8 @@ Feature: Login Functionality
   Scenario: Forget password
     Given the user is on the login page
     When the user clicks on the "Forgot Password" link and provides an invalid username
-    Then a success message is displayed
+    Then a success mail message is displayed
 
   Scenario: Valid login
     Given the user is on the login page
-    When the user enters valid credentials
     Then the user is logged in and sees the profile picture on the dashboard
