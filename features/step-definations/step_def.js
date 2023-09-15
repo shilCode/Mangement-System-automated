@@ -1,18 +1,22 @@
-// const assert = require('assert');
 const { Given, When, Then, setDefaultTimeout, AfterAll } = require('@cucumber/cucumber');
 const { chromium, expect } = require('@playwright/test');
 const { POmanger } = require('../../pageobject/POmanager');
 
-setDefaultTimeout(8000);
+setDefaultTimeout(20000);
+
 let poManger;
 let loginPage;
+let browser;
 
 
 Given('the user is on the login page', async function () {
-  const browser = await chromium.launch();
+
+  browser = await chromium.launch({
+  headless:true
+});
   const context = await browser.newContext();
   const page = await context.newPage();
-   poManger = new POmanger(page);
+  poManger = new POmanger(page);
   const loginPage = poManger.getLoginPage();
   await loginPage.goTo();
 
@@ -37,6 +41,34 @@ Then('an alert with {string} is displayed', async function (string) {
     await expect(loginPage.alertInvalidCred).toHaveText('Invalid credentials')
 
 });
+
+
+When('the user submits without filling required fields',async function () {
+  loginPage = poManger.getLoginPage()
+    
+    //required field needs to be filled text is present and visible
+    await loginPage.submit.click()
+    await expect(loginPage.requiredField.nth(0)).toContainText('Required')
+    await expect(loginPage.requiredField.nth(1)).toContainText('Required')
+   
+});
+
+Then('the required field messages are displayed',{timeout:2000},async function () {
+  await loginPage.submit.click()
+  await expect(loginPage.requiredField.nth(0)).toContainText('Required')
+  await expect(loginPage.requiredField.nth(1)).toContainText('Required')
+  await expect(loginPage.requiredField.nth(0)).toBeVisible()
+  await expect(loginPage.requiredField.nth(1)).toBeVisible()
+});
+
+AfterAll(async () => {
+  // Close the browser after all tests have finished
+  if (browser) {
+    await browser.close();
+  }
+});
+
+
 
 
 

@@ -5,10 +5,10 @@ Feature: Login Functionality
     When the user enters invalid credentials
     Then an alert with "Invalid credentials" is displayed
 
-  # Scenario: Login - Required field
-  #   Given the user is on the login page
-  #   When the user submits without filling required fields
-  #   Then the required field messages are displayed
+  Scenario: Login - Required field
+    Given the user is on the login page
+    When the user submits without filling required fields
+    Then the required field messages are displayed
 
   # Scenario: Forget password
   #   Given the user is on the login page
