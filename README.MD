@@ -1,25 +1,26 @@
-### HRM System Automation Test Suite
+# Manament System - Automation Project for Demo
 
-https://opensource-demo.orangehrmlive.com/
+### Platform used: https://opensource-demo.orangehrmlive.com/
 
 
-- Automation framework used: Playwright
+- Automation framework used: Playwright 
 - BDD framework used: Cucumber
 - Language: JS
 - Methods used: DRY, Page Object, OOP
 
 To run use code below:
 
-```
-npm i && npm test && npm run test-pw
+`npm i && npm test && npm run test-pw`
 
-```
 
-!!Issues I will fix
+
+> Issues I will fix
 -- need to fix explicit wait
 
+---
+## TEST CASES 
 
-## TEST CASES = 15  
+> open features folder to read as user what I I have worked on, remember to clone the project. 
 
 **login related test cases - login.spec.js**
 - user should be able to login using username and password provided 🟩
@@ -60,7 +61,7 @@ _Elements in the sidebar_
 - Verify Logout is functional🟩
 
 
-## API TEST
+### API TEST
 - TBD
 
 ## Transfer the test-cases to Page object model for with DRY method
@@ -73,7 +74,7 @@ _Elements in the sidebar_
 - NavBar🟩
     - should contain navigation related component
 
-## Report
+### Report
 - Allure reports
 
 
