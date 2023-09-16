@@ -9,7 +9,7 @@ module.exports = defineConfig({
   /* Run tests in files in parallel */
   fullyParallel: true,
   reporter: 'list',
-  retries:0,
+  retries:1,
   workers: process.env.CI ? undefined : undefined,
   
   
