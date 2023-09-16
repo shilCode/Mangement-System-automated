@@ -9,7 +9,7 @@ let newPage;
 
 Before(async ()=>{
     browser = await chromium.launch({
-      headless:true
+      headless:false
     });
       context = await browser.newContext();
       page = await context.newPage();
@@ -140,6 +140,57 @@ When('the user logs in with valid credentials',async function () {
     Then('the user can access help documentation', function () {
         console.log(newPage.url())
     });
+
+
+
+    
+      Then('the user area contains "Change Password"',async function () {
+        await navBar.userArea.click()
+        await navBar.userChangePass.click()
+       
+      });
+    
+
+    
+      When('the user clicks on "Change Password"',async function () {
+        await navBar.userChangePasswordAdmin.nth(0).type('admin123')
+        await navBar.userChangePasswordAdmin.nth(1).type('Admin1234')
+        await navBar.userChangePasswordAdmin.nth(2).type('Admin1234')
+        await navBar.userChangePasswordSubmit.click()
+
+      });
+    
+
+    
+      Then('the user can change their password successfully',async function () {
+        await navBar.userChangePasswordSuccess.nth(0).waitFor()
+        await expect(navBar.userChangePasswordSuccess.nth(0)).toBeVisible()
+        await expect(navBar.userChangePasswordSuccess.nth(0)).toContainText('Success')
+      });
+
+
+
+   
+      
+        Then('the user area contains "Logout"',async function () {
+         
+            await navBar.userArea.click()
+            
+        });
+      
+
+      
+        When('the user clicks on "Logout"',async function () {
+            await navBar.userAreaLogout.click()
+        
+        });
+      
+
+      
+        Then('the user is logged out',async function () {
+            expect(page.url()).toMatch('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
+        });
+      
 
 
   After(async ()=>{
