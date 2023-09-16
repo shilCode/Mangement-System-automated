@@ -6,7 +6,7 @@
 - Automation framework used: Playwright 
 - BDD framework used: Cucumber
 - Language: JS
-- Methods used: DRY, Page Object, OOP
+- Methods used: DRY, Page Object
 
 To run use code below:
 
