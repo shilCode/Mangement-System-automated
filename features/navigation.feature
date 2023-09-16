@@ -12,18 +12,18 @@ Feature: User Navigation and Actions in the Application
     And the user sees "Change Password" and can access it
     And the user sees "Logout" and can access it
 
-#   Scenario: User can view their profile
-#     Then the user area is visible and editable
-#     And the user area contains a profile link
-#     When the user clicks on the profile link
-#     Then the user can view their profile
+  Scenario: User can view their profile
+    Then the user area is visible and editable
+    And the user area contains a profile link
+    When the user clicks on the profile link
+    Then the user can view their profile
 
-#   Scenario: User can access "About" and view information
-#     Then the user area is visible and editable
-#     And the user area contains "About"
-#     When the user clicks on "About"
-#     Then the user can view information in the "About" dialog
-#     And the user can close the "About" dialog
+  Scenario: User can access "About" and view information
+    Then the user area is visible and editable
+    And the user area contains "About"
+    When the user clicks on "About"
+    Then the user can view information in the "About" dialog
+    And the user can close the "About" dialog
 
 #   Scenario: User can access "Support" and view support information
 #     Then the user area is visible and editable
