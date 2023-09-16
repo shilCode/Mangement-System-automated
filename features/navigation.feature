@@ -25,13 +25,12 @@ Feature: User Navigation and Actions in the Application
     Then the user can view information in the "About" dialog
     And the user can close the "About" dialog
 
-#   Scenario: User can access "Support" and view support information
-#     Then the user area is visible and editable
-#     And the user area contains "Support"
-#     When the user clicks on "Support"
-#     Then the user is taken to the support page
-#     And the user sees support contact information
-#     And the user can access help documentation
+  Scenario: User can access "Support" and view support information
+    Then the user area is visible and editable
+    And the user area contains "Support"
+    When the user clicks on "Support"
+    Then the user is taken to the support page & the user sees support contact information
+    And the user can access help documentation
 
 #   Scenario: User can change their password
 #     Then the user area is visible and editable

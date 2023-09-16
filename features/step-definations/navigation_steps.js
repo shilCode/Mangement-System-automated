@@ -4,6 +4,7 @@ const { POmanger } = require('../../pageobject/POmanager');
 let poManger;
 let loginPage;
 let navBar;
+let newPage;
 
 
 Before(async ()=>{
@@ -94,6 +95,51 @@ When('the user logs in with valid credentials',async function () {
     await navBar.userAreaDialogClose.click()
   });
 
+
+
+  
+    Then('the user area contains "Support"',async function () {
+        
+        await navBar.userArea.click()
+        await navBar.userAreaSupport.click()
+        
+        
+    });
+  
+
+  
+    When('the user clicks on "Support"',async function () {
+        await expect(page).toHaveURL(/.*support/);
+        await expect(navBar.userAreaSupportLink).toContainText(' ossupport@orangehrm.com ')
+        await expect(navBar.userAreaSupportLink).toBeEditable()
+        await expect(navBar.userAreadHelpIcon).toBeEditable()
+  
+       
+    });
+  
+
+  
+    Then('the user is taken to the support page & the user sees support contact information',async function () {
+        const pagePromise = context.waitForEvent('page');
+        await navBar.userAreadHelpIcon.click()
+        //navigation to newPage
+         newPage = await pagePromise;
+          await newPage.waitForLoadState();
+          const HelpGuide = newPage.url()
+  
+        expect(HelpGuide).toMatch('https://starterhelp.orangehrm.com/hc/en-us')
+
+  
+         
+    });
+  
+
+  
+
+  
+    Then('the user can access help documentation', function () {
+        console.log(newPage.url())
+    });
 
 
   After(async ()=>{
