@@ -4,6 +4,7 @@ const {POmanger} = require('../pageobject/POmanager')
 let page;
 let poManger;
 let context;
+let loginPage;
 
 
     test.beforeAll( async ({browser})=>{
@@ -11,14 +12,14 @@ let context;
       page = await browser.newPage();
       poManger = new POmanger(page);
     
-       const loginPage = poManger.getLoginPage()
+      loginPage = poManger.getLoginPage()
     
        await loginPage.goTo()
        await loginPage.validLogin()
     })
   
     test('Dashboard needs to be landing page after login',async()=>{
-      const loginPage = poManger.getLoginPage()
+      loginPage = poManger.getLoginPage()
       const sideBar = poManger.getSideBar()
    
       //making sure after login Dashboard is present after login
@@ -40,7 +41,7 @@ let context;
   
     test('Verify all the side-bar component are visible in the side-bar',async()=>{
   
-      const loginPage = poManger.getLoginPage()
+      loginPage = poManger.getLoginPage()
       const sideBar = poManger.getSideBar()
    
       await expect(sideBar.mainMenuButton).toBeEditable()
@@ -96,7 +97,7 @@ let context;
   
     test('Verify that search is fucntional',async()=>{
   
-      const loginPage = poManger.getLoginPage()
+      loginPage = poManger.getLoginPage()
       const sideBar = poManger.getSideBar()
   
       //making sure a component is not visible so that search work as it shoud be
