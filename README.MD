@@ -1,4 +1,4 @@
-# Manament System - Automation Project for Demo
+# Management System - Automation Project for Demo
 
 ### Platform used: https://opensource-demo.orangehrmlive.com/
 
