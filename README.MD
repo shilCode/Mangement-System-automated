@@ -1,4 +1,4 @@
-# Management System - Automation Project for Demo
+# **Management System - Automated for Demo**
 
 ### Platform used: https://opensource-demo.orangehrmlive.com/
 
@@ -7,15 +7,20 @@
 - BDD framework used: Cucumber
 - Language: JS
 - Methods used: DRY, Page Object
+- CI - GitHub Actions
 
-To run use code below:
+## **To run use code below:**
 
 `npm i && npm test && npm run test-pw`
 
+Click on **Actions** to view job created.
+
+
+---
 
 
 > Issues I will fix
--- need to fix explicit wait
+-- need to fix explicit wait for feature test-cases
 
 ---
 ## TEST CASES 
