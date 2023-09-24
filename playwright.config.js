@@ -8,7 +8,7 @@ module.exports = defineConfig({
   testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
-  reporter: 'list',
+  reporter: process.env.CI ? 'dot' : 'list',
   retries:1,
   workers: process.env.CI ? undefined : undefined,
   
@@ -17,6 +17,7 @@ module.exports = defineConfig({
     
     trace: 'on-first-retry',
     headless:true,
+    
 
   },
 
