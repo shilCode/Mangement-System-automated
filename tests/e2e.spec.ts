@@ -1,6 +1,8 @@
 import  { test,expect } from "@playwright/test";
 import {LoginPage} from '../pageobject/shared/LoginPage'
 import { SideBar } from "../pageobject/shared/Sidebar";
+import { NavBar } from "../pageobject/shared/NavBar";
+
 
 
 test('e2e test',async({page})=>{
@@ -26,6 +28,13 @@ test('e2e test',async({page})=>{
     await expect(sidebar.maintenceComponent).toContainText('Maintenance')
     await expect(sidebar.claimComponent).toContainText('Claim')
     await expect(sidebar.buzzComponent).toContainText('Buzz')
+    await sidebar.sideBarHideBtn.click()
+
+    const navBar = new NavBar(page)
+    await expect(navBar.navBarFullView).toBeVisible()
+    await expect(navBar.userArea).toBeInViewport()
+    await navBar.userArea.click()
+
     await page.pause()
 
 })

@@ -2,6 +2,7 @@ import { Locator, Page } from "playwright";
 
 export class SideBar{
     public sideBarFullPanel:Locator
+    public sideBarHideBtn:Locator
     public dashboardHeader:Locator
     public mainMenuButton:Locator
     public adminComponent:Locator
@@ -19,7 +20,7 @@ export class SideBar{
     public claimComponent:Locator
     constructor(page:Page){
         this.sideBarFullPanel=page.locator('[class="oxd-sidepanel-body"]')
-        this.dashboardHeader=page.locator('[class*=oxd-text--h6]');
+        this.sideBarHideBtn=this.sideBarFullPanel.getByRole('button')
         this.mainMenuButton=this.sideBarFullPanel.locator('[class*="oxd-main-menu-button"]')
         this.adminComponent=this.sideBarFullPanel.locator('[href="/web/index.php/admin/viewAdminModule"]')
         this.pimComponent=this.sideBarFullPanel.locator('[href="/web/index.php/pim/viewPimModule"]')
