@@ -23,22 +23,7 @@ export class LoginPage{
     }
 
     async goTo(){
-        await this.page.goto('https://opensource-demo.orangehrmlive.com/');
-    }
-
-    async validLogin(){
-
-
-    if(await this.userName.isVisible()){
-        await this.userName.type('Admin')
-        await this.password.type('admin123')
-        await this.submit.click()
-    }else {
-        this.page.reload()
-        await this.userName.type('Admin')
-        await this.password.type('admin123')
-        await this.submit.click()
-    }
+        await this.page.goto('');
     }
 
  

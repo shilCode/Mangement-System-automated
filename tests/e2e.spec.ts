@@ -4,7 +4,7 @@ import { SideBar } from "../pageobject/shared/Sidebar";
 
 
 test('e2e test',async({page})=>{
-    await page.goto('https://opensource-demo.orangehrmlive.com/')
+    await page.goto('')
     expect(page.url()).toMatch(/auth/)
     const login = new LoginPage(page)
     await login.userName.fill('Admin')
