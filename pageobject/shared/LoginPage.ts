@@ -1,6 +1,16 @@
-class LoginPage{
-    constructor(page){
-        this.page=page;
+import { Locator, Page } from "playwright";
+
+export class LoginPage{
+    public readonly page: Page;
+    public readonly userName:Locator;
+    public readonly password:Locator;
+    public readonly submit:Locator;
+    public readonly alertInvalidCred:Locator;
+    public readonly requiredField:Locator;
+    public readonly profilePicDashboard:Locator;
+    public readonly forgetPassword:Locator;
+    public readonly forgetPasswordTitle:Locator;
+    constructor(page:Page){
         this.userName=page.locator('[placeholder="Username"]');
         this.password=page.locator('[name="password"]');
         this.submit=page.locator('[type="submit"]')
@@ -19,7 +29,7 @@ class LoginPage{
     async validLogin(){
 
 
-    if(this.userName.isVisible()){
+    if(await this.userName.isVisible()){
         await this.userName.type('Admin')
         await this.password.type('admin123')
         await this.submit.click()
@@ -33,4 +43,3 @@ class LoginPage{
 
  
 }
-module.exports=LoginPage;
