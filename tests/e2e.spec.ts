@@ -27,4 +27,5 @@ test('e2e test',async({page})=>{
     await expect(sidebar.claimComponent).toContainText('Claim')
     await expect(sidebar.buzzComponent).toContainText('Buzz')
     await page.pause()
+
 })
