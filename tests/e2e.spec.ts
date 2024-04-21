@@ -5,7 +5,7 @@ import { NavBar } from "../pageobject/shared/NavBar";
 
 
 
-test('e2e test',async({page})=>{
+test('login user, sidebar text assertions and then logout from the navigation menu dropdown',async({page})=>{
     await page.goto('')
     expect(page.url()).toMatch(/auth/)
     const login = new LoginPage(page)
@@ -28,13 +28,19 @@ test('e2e test',async({page})=>{
     await expect(sidebar.maintenceComponent).toContainText('Maintenance')
     await expect(sidebar.claimComponent).toContainText('Claim')
     await expect(sidebar.buzzComponent).toContainText('Buzz')
-    await sidebar.sideBarHideBtn.click()
-
+    
     const navBar = new NavBar(page)
+    await page.waitForLoadState('networkidle')
     await expect(navBar.navBarFullView).toBeVisible()
-    await expect(navBar.userArea).toBeInViewport()
+    await expect(navBar.userArea).toBeVisible()
+    await sidebar.sideBarHideBtn.click()
     await navBar.userArea.click()
+    await expect(navBar.userDropdownLogout).toContainText('Logout')
+    await navBar.userDropdownLogout.click()
+    expect(page.url()).toMatch(/auth/)
+})
 
-    await page.pause()
+test.fixme('user can goto leave, select leave type, select dates, add a comment, successful leave & finally cancel the leave',async({page})=>{
 
+ 
 })
