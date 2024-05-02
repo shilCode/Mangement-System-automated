@@ -11,8 +11,8 @@ export class LoginPage{
     public readonly forgetPassword:Locator;
     public readonly forgetPasswordTitle:Locator;
     constructor(page:Page){
-        this.userName=page.locator('[placeholder="Username"]');
-        this.password=page.locator('[name="password"]');
+        this.userName=page.getByPlaceholder('username');
+        this.password=page.getByPlaceholder('password');
         this.submit=page.locator('[type="submit"]')
         this.alertInvalidCred=page.locator('[role="alert"]')
         this.requiredField=page.locator('[class*="oxd-input-field-error-message"]')
